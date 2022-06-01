@@ -25,11 +25,13 @@ python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes.y
 
 * Finetune the panoptic segmentation model with full scale image inputs
 ```bash
+cd ./projects/PanopticDepth/
 python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps/model_final.pth OUTPUT_DIR ./output/ps_fsf
 ```
 
 * Train the depth-aware panoptic segmentation model
 ```bash
+cd ./projects/PanopticDepth/
 python3 train.py --config-file configs/cityscapes_dps/PanopticDepth-R50-cityscapes-dps.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps_fsf/model_final.pth OUTPUT_DIR ./output/dps
 ```
 
