@@ -22,12 +22,12 @@ This project is based on [Detectron2](https://github.com/facebookresearch/detect
 * Train the panoptic segmentation model
 ```bash
 cd ./projects/PanopticDepth/
-python3 train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes.yaml --num-gpus 8 OUTPUT_DIR ./output/ps
+python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes.yaml --num-gpus 8 OUTPUT_DIR ./output/ps
 ```
 
 * Finetune the panoptic segmentation model with full scale image inputs
 ```bash
-python3 train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps/model_final.pth OUTPUT_DIR ./output/ps_fsf
+python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps/model_final.pth OUTPUT_DIR ./output/ps_fsf
 ```
 * Train the depth-aware panoptic segmentation model
 ```bash
@@ -38,7 +38,7 @@ python3 train.py --config-file configs/cityscapes_dps/PanopticDepth-R50-cityscap
 To evaluate a pre-trained model with 8 GPUs, run:
 ```bash
 cd ./projects/PanopticDepth/
-python3 projects/PanopticFCN/train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIGHTS /path/to/model_checkpoint
+python3 train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIGHTS /path/to/model_checkpoint
 ```
 
 ## Model ZOO
