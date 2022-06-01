@@ -109,7 +109,7 @@ def build_resnet_fpn_p5_backbone(cfg, input_shape: ShapeSpec):
 
 def build_backbone(cfg, input_shape=None):
     """
-    Build a backbone for PanopticFCN.
+    Build a backbone for PanopticDepth.
 
     Returns:
         an instance of :class:`Backbone`
