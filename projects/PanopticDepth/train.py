@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """
-PanopticFCN Training Script.
+PanopticDepth Training Script.
 
 This script is a simplified version of the training script in detectron2/tools.
 """
