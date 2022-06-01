@@ -17,7 +17,7 @@ def weighted_dice_loss(
     eps: float = 1e-8,
 ):
     """
-    Weighted version of Dice Loss used in PanopticFCN for multi-positive optimization.
+    Weighted version of Dice Loss used in PanopticDepth for multi-positive optimization.
 
     Args:
         prediction: prediction for Things or Stuff,
