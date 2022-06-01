@@ -7,7 +7,7 @@ from ..utils import multi_apply
 
 class GenerateGT(object):
     """
-    Generate ground truth for Panoptic FCN.
+    Generate ground truth for PanopticDepth.
     """
     def __init__(self, cfg):
         self.device = torch.device(cfg.MODEL.DEVICE)
