@@ -10,26 +10,74 @@ In this repository, we present a unified framework for depth-aware panoptic segm
 ## Installation
 This project is based on [Detectron2](https://github.com/facebookresearch/detectron2), which can be constructed as follows.
 * Install Detectron2 following [the instructions](https://detectron2.readthedocs.io/tutorials/install.html).
-* Setup the Cityscapes dataset following [this structure](https://github.com/facebookresearch/detectron2/blob/master/datasets/README.md).
-* Setup the Cityscapes-DPS dataset following [this structure](https://github.com/joe-siyuan-qiao/ViP-DeepLab/blob/master/cityscapes-dvps/README.md).
 * Copy this project to `/path/to/detectron2/`
-* Convert the Cityscapes-DPS dataset format with [this script]().
+* Setup the [Cityscapes dataset](https://github.com/facebookresearch/detectron2/blob/master/datasets/README.md).
+* Download the [Cityscapes-DPS dataset](https://github.com/joe-siyuan-qiao/ViP-DeepLab/blob/master/cityscapes-dvps/README.md).
+* Setup the Cityscapes-DPS dataset format with [this script](https://github.com/NaiyuGao/PanopticDepth/blob/main/datasets/prepare_dvps_cityscapes.py).
+
 ## Training
+* Train the panoptic segmentation model
 ```bash
 cd ./projects/PanopticDepth/
+python3 train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes.yaml --num-gpus 8 OUTPUT_DIR ./output/ps
 ```
 
+* Finetune the panoptic segmentation model with full scale image inputs
 ```bash
-python train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes.yaml --num-gpus 8 OUTPUT_DIR "./output/ps"
+python3 train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps/model_final.pth OUTPUT_DIR ./output/ps_fsf
+```
+* Train the depth-aware panoptic segmentation model
+```bash
+python3 train.py --config-file configs/cityscapes_dps/PanopticDepth-R50-cityscapes-dps.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps_fsf/model_final.pth OUTPUT_DIR ./output/dps
 ```
 
+## Evaluation
+To evaluate a pre-trained model with 8 GPUs, run:
 ```bash
-python train.py --config-file configs/cityscapes/PanopticFCN-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS  "./output/ps/model_final.pth" OUTPUT_DIR "./output/ps_fsf"
+cd ./projects/PanopticDepth/
+python3 projects/PanopticFCN/train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIGHTS /path/to/model_checkpoint
 ```
 
-```bash
-python train.py --config-file configs/cityscapes_dps/PanopticDepth-R50-cityscapes-dps.yaml --num-gpus 8 MODEL.WEIGHTS "./output/ps_fsf/model_final.pth"  OUTPUT_DIR "./output/dps"
-```
+## Trained models
+Trained model for panoptic segmentation
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="bottom">Method</th>
+<th valign="bottom">Backbone</th>
+<th valign="bottom">PQ</th>
+<th valign="bottom">PQth</th>
+<th valign="bottom">PQst</th>
+<th valign="bottom">download</th>
+<!-- TABLE BODY -->
+<tr><td align="left">PanopticFCN</td>
+<td align="center">R50</td>
+<td align="center"> 64.1 </td>
+<td align="center"> 7 </td>
+<td align="center"> 4 </td>
+<td align="center"> <a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a> </td>
+</tr>
+</tbody></table>
+
+Trained model for depth-aware panoptic segmentation
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="bottom">Method</th>
+<th valign="bottom">Backbone</th>
+<th valign="bottom">DPQ</th>
+<th valign="bottom">DPQth</th>
+<th valign="bottom">DPQst</th>
+<th valign="bottom">download</th>
+<!-- TABLE BODY -->
+<tr><td align="left">PanopticFCN</td>
+<td align="center">R50</td>
+<td align="center"> 4 </td>
+<td align="center"> 7 </td>
+<td align="center"> 4 </td>
+<td align="center"> <a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a> </td>
+</tr>
+</tbody></table>
 
 ## <a name="CitingPanopticDepth"></a>Citing PanopticDepth
 
