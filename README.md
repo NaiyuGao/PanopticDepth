@@ -17,21 +17,14 @@ This project is based on [Detectron2](https://github.com/facebookresearch/detect
 * Setup the Cityscapes-DPS dataset format with `datasets/prepare_dvps_cityscapes.py`
 
 ## Training
-* Train the panoptic segmentation model
+To train a DPS model with 8 GPUs, run:
 ```bash
 cd ./projects/PanopticDepth/
+# Step1, train the PS model
 python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes.yaml --num-gpus 8 OUTPUT_DIR ./output/ps
-```
-
-* Finetune the panoptic segmentation model with full scale image inputs
-```bash
-cd ./projects/PanopticDepth/
+# Step2, finetune the PS model with full scale image inputs
 python3 train.py --config-file configs/cityscapes/PanopticDepth-R50-cityscapes-FullScaleFinetune.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps/model_final.pth OUTPUT_DIR ./output/ps_fsf
-```
-
-* Train the depth-aware panoptic segmentation model
-```bash
-cd ./projects/PanopticDepth/
+# Step3, train the DPS model
 python3 train.py --config-file configs/cityscapes_dps/PanopticDepth-R50-cityscapes-dps.yaml --num-gpus 8 MODEL.WEIGHTS ./output/ps_fsf/model_final.pth OUTPUT_DIR ./output/dps
 ```
 
@@ -42,7 +35,7 @@ cd ./projects/PanopticDepth/
 python3 train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIGHTS /path/to/model_checkpoint
 ```
 
-## Model ZOO
+## Model Zoo
 **Cityscapes panoptic segmentation**
 <table><tbody>
 <!-- START TABLE -->
