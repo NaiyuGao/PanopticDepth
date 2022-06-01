@@ -1,0 +1,63 @@
+MODEL:
+  META_ARCHITECTURE: "PanopticDepth"
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  MASK_ON: True
+  DEPTH_ON: True
+  PIXEL_MEAN: [123.675, 116.28, 103.53]
+  PIXEL_STD: [1.0, 1.0, 1.0]
+  RESNETS:
+    DEPTH: 50
+    OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+  FPN:
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+  LOSS_WEIGHT:
+    SEGMENT: 4.0
+  POSITION_HEAD:
+    THING:
+      NUM_CLASSES: 8
+      THRES: 0.01
+      TOP_NUM: 200
+    STUFF:
+      THRES: 0.1
+      NUM_CLASSES: 19
+  KERNEL_HEAD:
+    INSTANCE_SCALES: ((1, 128), (64, 256), (128, 512), (256, 1024), (512, 2048),)
+  TENSOR_DIM: 150
+  INFERENCE:
+    INST_THRES: 0.5
+    SIMILAR_THRES: 0.97
+    COMBINE:
+      STUFF_AREA_LIMIT: 2048
+DATASETS:
+  NAME: "CityscapesDPS"
+  TRAIN: ("cityscapes_dps_train",)
+  TEST: ("cityscapes_dps_val",)
+DATALOADER:
+  FILTER_EMPTY_ANNOTATIONS: True
+  NUM_WORKERS: 10
+SOLVER:
+  BASE_LR: 0.0001
+  OPTIMIZER: "ADAM"
+  WEIGHT_DECAY: 1e-4
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  POLY_LR_POWER: 0.9
+  WARMUP_ITERS: 2000
+  WARMUP_FACTOR: 0.001
+  WARMUP_METHOD: "linear"
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_VALUE: 35.0
+  IMS_PER_BATCH: 8
+  MAX_ITER: 10000
+  CHECKPOINT_PERIOD: 3000
+INPUT:
+  COLOR_AUG: True
+  CROP:
+    ENABLED: False
+    TYPE: "absolute"
+    SIZE: (1024, 2048)
+    RESCALE: (0.8, 1.2)
+    WITH_PAD: True
+  DEPTH_BOUND: True
+  MASK_FORMAT: "bitmask"
+VERSION: 2
