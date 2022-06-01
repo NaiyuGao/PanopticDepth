@@ -465,7 +465,7 @@ class PanopticDepth(nn.Module):
     @torch.no_grad()
     def inference(self, batch_inputs, images, pred_centers, pred_regions, pred_weights, encode_feat, encode_depths, pred_depth_kernels):
         """
-        Panoptic FCN inference process.
+        PanopticDepth inference process.
 
         Args:
             batched_inputs: a list, batched outputs of :class:`DatasetMapper`
