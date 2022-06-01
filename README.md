@@ -57,7 +57,7 @@ python3 train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIG
 <td align="center"> 64.1 </td>
 <td align="center"> 58.8 </td>
 <td align="center"> 68.0 </td>
-<td align="center"> <a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a> </td>
+<td align="center"> <a href="https://drive.google.com/file/d/13m0DVJyuGw1Mdnnvcrlb9_i1b-b7cvjM/view?usp=sharing">google drive</a></td>
 </tr>
 </tbody></table>
 
@@ -77,7 +77,7 @@ python3 train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIG
 <td align="center"> 58.3 </td>
 <td align="center"> 52.1 </td>
 <td align="center"> 62.8 </td>
-<td align="center"> <a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a> </td>
+<td align="center"> <a href="https://drive.google.com/file/d/1tFWIwP_SfwdypyjAUH14fHdk3qRbnkdp/view?usp=sharing">google drive</a></td>
 </tr>
 </tbody></table>
 
@@ -97,5 +97,5 @@ Consider cite PanopticDepth in your publications if it helps your research.
 ## Acknowledgements
 We have used utility functions from other wonderful open-source projects, we would espeicially thank the authors of:
 - [Detectron2](https://github.com/facebookresearch/detectron2)
-- [TorchVision](https://github.com/pytorch/vision)
+- [torchvision](https://github.com/pytorch/vision)
 - [PanopticFCN](https://github.com/dvlab-research/PanopticFCN)
