@@ -1,4 +1,7 @@
-# PanopticDepth: A Unified Framework for Depth-aware Panoptic Segmentatio
+# PanopticDepth (CVPR2022)
+**A Unified Framework for Depth-aware Panoptic Segmentation**
+  
+Naiyu Gao, Fei He, Jian Jia, Yanhu Shan, Haoyang Zhang, Xin Zhao, Kaiqi Huang
 
 [[`arXiv`](https://arxiv.org/)] [[`BibTeX`](#CitingPanopticDepth)]
 
@@ -38,8 +41,8 @@ cd ./projects/PanopticDepth/
 python3 projects/PanopticFCN/train.py --eval-only --config-file <config.yaml> --num-gpus 8 MODEL.WEIGHTS /path/to/model_checkpoint
 ```
 
-## Trained models
-Trained model for panoptic segmentation
+## Model ZOO
+**Cityscapes panoptic segmentation**
 <table><tbody>
 <!-- START TABLE -->
 <!-- TABLE HEADER -->
@@ -50,7 +53,7 @@ Trained model for panoptic segmentation
 <th valign="bottom">PQst</th>
 <th valign="bottom">download</th>
 <!-- TABLE BODY -->
-<tr><td align="left">PanopticFCN</td>
+<tr><td align="left">PanopticDepth (seg. only)</td>
 <td align="center">R50</td>
 <td align="center"> 64.1 </td>
 <td align="center"> 7 </td>
@@ -59,7 +62,7 @@ Trained model for panoptic segmentation
 </tr>
 </tbody></table>
 
-Trained model for depth-aware panoptic segmentation
+**Cityscapes depth-aware panoptic segmentation**
 <table><tbody>
 <!-- START TABLE -->
 <!-- TABLE HEADER -->
@@ -70,7 +73,7 @@ Trained model for depth-aware panoptic segmentation
 <th valign="bottom">DPQst</th>
 <th valign="bottom">download</th>
 <!-- TABLE BODY -->
-<tr><td align="left">PanopticFCN</td>
+<tr><td align="left">PanopticDepth</td>
 <td align="center">R50</td>
 <td align="center"> 4 </td>
 <td align="center"> 7 </td>
@@ -91,3 +94,9 @@ Consider cite PanopticDepth in your publications if it helps your research.
   year={2022}
 }
 ```
+
+## Acknowledgements
+We have used utility functions from other wonderful open-source projects, we would espeicially thank the authors of:
+- [Detectron2](https://github.com/facebookresearch/detectron2)
+- [TorchVision](https://github.com/pytorch/vision)
+- [PanopticFCN](https://github.com/dvlab-research/PanopticFCN)
