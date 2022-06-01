@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 from tqdm import tqdm
 
-root = '/home/gny/naiyu.gao/datasets/dvps/cityscapes-dvps/video_sequence/'
+root = '/path/to/cityscapes-dvps/video_sequence/'
 
 for split in ['val','train']:
     imgs      = glob(root+split+'/*_leftImg8bit.png')
